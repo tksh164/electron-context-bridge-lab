@@ -1,6 +1,6 @@
 "use strict";
 
-import { app, protocol, BrowserWindow } from "electron";
+import { app, protocol, BrowserWindow, ipcMain } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 import * as path from "path";
@@ -81,3 +81,7 @@ if (isDevelopment) {
     });
   }
 }
+
+ipcMain.on("exposed-method1", (event, args) => {
+  console.log("massage from renderer: " + args);
+});
