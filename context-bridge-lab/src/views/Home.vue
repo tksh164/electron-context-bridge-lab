@@ -4,6 +4,7 @@
     <div>
       <button @click="method1">method1</button>
     </div>
+    <div><button @click="method2">method2</button></div>
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>
 </template>
@@ -22,6 +23,19 @@ export default class Home extends Vue {
     console.log("method1");
     const { exposedApi } = window;
     exposedApi.method1("Hello");
-  }  
+  }
+
+  async method2(): Promise<void> {
+    console.log("method2");
+    const result = await window.exposedApi
+      .method2("Method2")
+      .then((result: number) => {
+        return result;
+      })
+      .catch((err: string) => {
+        console.log("err = " + err);
+      });
+    console.log("result = " + result);
+  }
 }
 </script>

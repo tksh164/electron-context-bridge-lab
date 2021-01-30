@@ -22,7 +22,7 @@ async function createWindow() {
       nodeIntegration: (process.env
         .ELECTRON_NODE_INTEGRATION as unknown) as boolean,
       contextIsolation: true,
-      preload: path.join(__dirname, "preload.js") 
+      preload: path.join(__dirname, "preload.js")
     }
   });
 
@@ -84,4 +84,10 @@ if (isDevelopment) {
 
 ipcMain.on("exposed-method1", (event, args) => {
   console.log("massage from renderer: " + args);
+});
+
+ipcMain.handle("exposed-method2", (event, args: string): number => {
+  console.log("method2: massage from renderer: " + args);
+  //throw "error!!";
+  return args.length;
 });
