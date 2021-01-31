@@ -19,6 +19,13 @@ import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
   }
 })
 export default class Home extends Vue {
+  mounted(): void {
+    console.log("Register the method3 listener in the renderer.");
+    window.exposedApi.registerMehtod3Listener((message: string) => {
+      console.log("Received a message in the renderer: message = " + message);
+    });
+  }
+
   method1(): void {
     console.log("method1");
     const { exposedApi } = window;

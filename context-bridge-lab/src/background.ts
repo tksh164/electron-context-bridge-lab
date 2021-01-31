@@ -1,6 +1,6 @@
 "use strict";
 
-import { app, protocol, BrowserWindow, ipcMain } from "electron";
+import { app, protocol, BrowserWindow, ipcMain, Menu, MenuItem } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 import * as path from "path";
@@ -35,6 +35,21 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL("app://./index.html");
   }
+
+  const menu = Menu.getApplicationMenu();
+  menu?.append(new MenuItem({
+    label: "Lab",
+    submenu: [
+      {
+        label: "Method3",
+        click: async () => {
+          console.log("Send a message from the main to the renderer.");
+          win.webContents.send("method3", "Message from the main");
+        }
+      }
+    ]
+  }));
+  Menu.setApplicationMenu(menu);
 }
 
 // Quit when all windows are closed.
