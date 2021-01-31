@@ -99,7 +99,7 @@ if (isDevelopment) {
 
 // The call without the return value from the renderer to the main via the preload script.
 ipcMain.on("do-something1", (event, args) => {
-  console.log("[Main] Received a massage from the renderer: args = " + args);
+  console.log("[Main:do-something1] Received a massage from the renderer: args = " + args);
 });
 
 // The async call with the return value from the renderer to the main via the preload script.

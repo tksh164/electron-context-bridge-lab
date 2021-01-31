@@ -26,7 +26,7 @@ export default class Home extends Vue {
 
   // The sync call without the return value from the renderer to the main via the preload script.
   doSomething1(): void {
-    console.log("[Renderer] Call doSomething1().");
+    console.log("[Renderer:doSomething1] Call doSomething1().");
     const { exposedApi } = window;
     exposedApi.doSomething1("Message from the renderer");
   }
