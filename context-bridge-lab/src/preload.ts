@@ -10,7 +10,9 @@ contextBridge.exposeInMainWorld("exposedApi", {
   doSomething2: async (message: string): Promise<number> => {
     return ipcRenderer.invoke("do-something2", message);
   },
-  registerMehtod3Listener: async (listener: Function): Promise<void> => {
-    ipcRenderer.on("method3", (event, args) => { listener(args); })
+
+  // Register the listener for the doSomething3.
+  registerDoSomething3Listener: async (listener: Function): Promise<void> => {
+    ipcRenderer.on("do-something3", (event, args) => { listener(args); })
   }
 });

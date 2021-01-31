@@ -41,10 +41,12 @@ async function createWindow() {
     label: "Lab",
     submenu: [
       {
-        label: "Method3",
+        label: "doSomething3",
         click: async () => {
-          console.log("Send a message from the main to the renderer.");
-          win.webContents.send("method3", "Message from the main");
+          console.log("[Main:doSomething3] Send a message to the renderer.");
+
+          // Send a message from the main to the renderer via the preload script.
+          win.webContents.send("do-something3", "Message from the main");
         }
       }
     ]
