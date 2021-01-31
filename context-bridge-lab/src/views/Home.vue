@@ -17,8 +17,7 @@ import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
   }
 })
 export default class Home extends Vue {
-  // TODO: The listener is registered when view changed every time. As a result, the multiple listeners registered. It leads multiple fired by single call.
-  created(): void {
+  mounted(): void {
     console.log("[Renderer:doSomething3] Register the listener for doSomething3.");
 
     // Register the listener for the doSomething3.
