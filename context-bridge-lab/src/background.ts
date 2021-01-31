@@ -97,8 +97,9 @@ if (isDevelopment) {
   }
 }
 
-ipcMain.on("exposed-method1", (event, args) => {
-  console.log("massage from renderer: " + args);
+// The call without the return value from the renderer to the main via the preload script.
+ipcMain.on("do-something1", (event, args) => {
+  console.log("[Main] Received a massage from the renderer: args = " + args);
 });
 
 ipcMain.handle("exposed-method2", (event, args: string): number => {

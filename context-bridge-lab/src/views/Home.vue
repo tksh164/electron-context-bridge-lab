@@ -1,9 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <div>
-      <button @click="method1">method1</button>
-    </div>
+    <div><button @click="doSomething1">doSomething1</button></div>
     <div><button @click="method2">method2</button></div>
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>
@@ -26,10 +24,11 @@ export default class Home extends Vue {
     });
   }
 
-  method1(): void {
-    console.log("method1");
+  // The sync call without the return value from the renderer to the main via the preload script.
+  doSomething1(): void {
+    console.log("[Renderer] Call doSomething1().");
     const { exposedApi } = window;
-    exposedApi.method1("Hello");
+    exposedApi.doSomething1("Message from the renderer");
   }
 
   async method2(): Promise<void> {
