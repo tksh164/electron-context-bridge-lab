@@ -2,7 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <div><button @click="doSomething1">doSomething1</button></div>
-    <div><button @click="method2">method2</button></div>
+    <div><button @click="doSomething2">doSomething2</button></div>
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>
 </template>
@@ -31,17 +31,18 @@ export default class Home extends Vue {
     exposedApi.doSomething1("Message from the renderer");
   }
 
-  async method2(): Promise<void> {
-    console.log("method2");
+  // The async call with the return value from the renderer to the main via the preload script.
+  async doSomething2(): Promise<void> {
+    console.log("[Renderer:doSomething2] Call doSomething2().");
     const result = await window.exposedApi
-      .method2("Method2")
+      .doSomething2("Message")
       .then((result: number) => {
         return result;
       })
       .catch((err: string) => {
-        console.log("err = " + err);
+        console.log("[Renderer:doSomething2] err = " + err);
       });
-    console.log("result = " + result);
+    console.log("[Renderer:doSomething2] result = " + result);
   }
 }
 </script>

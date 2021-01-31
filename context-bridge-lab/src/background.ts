@@ -102,8 +102,10 @@ ipcMain.on("do-something1", (event, args) => {
   console.log("[Main] Received a massage from the renderer: args = " + args);
 });
 
-ipcMain.handle("exposed-method2", (event, args: string): number => {
-  console.log("method2: massage from renderer: " + args);
+// The async call with the return value from the renderer to the main via the preload script.
+ipcMain.handle("do-something2", (event, args: string): number => {
+  console.log("[Main:do-something2] Received a massage from the renderer: args = " + args);
+  console.log("[Main:do-something2] Return the message text length: length = " + args.length);
   //throw "error!!";
   return args.length;
 });
