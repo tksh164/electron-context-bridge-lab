@@ -20,8 +20,8 @@ export default class Home extends Vue {
   mounted(): void {
     console.log("[Renderer:doSomething3] Register the listener for doSomething3.");
 
-    // Register the listener for the doSomething3.
-    window.exposedApi.registerDoSomething3Listener((message: string) => {
+    // Add the listener for the doSomething3.
+    window.exposedApi.addDoSomething3Listener((message: string) => {
       console.log("[Renderer:doSomething3] Received a message: message = " + message);
     });
   }

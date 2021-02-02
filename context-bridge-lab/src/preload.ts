@@ -11,8 +11,8 @@ contextBridge.exposeInMainWorld("exposedApi", {
     return ipcRenderer.invoke("do-something2", message);
   },
 
-  // Register the listener for the doSomething3.
-  registerDoSomething3Listener: async (listener: Function): Promise<void> => {
+  // Add the listener for the doSomething3.
+  addDoSomething3Listener: async (listener: Function): Promise<void> => {
     // NOTE: The listener is registered when every view change. As a result, the multiple listeners registered.
     // It leads multiple listeners fired by single call. So, remove the existing listeners before register new one.
     ipcRenderer.removeAllListeners("do-something3");
