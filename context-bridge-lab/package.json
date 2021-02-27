@@ -1,6 +1,11 @@
 {
   "name": "context-bridge-lab",
   "version": "0.1.0",
+  "description": "Electron contextBridge sample project.",
+  "license": "MIT",
+  "author": {
+    "name": "Takeshi Katano"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
