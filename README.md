@@ -1,6 +1,6 @@
 # electron-context-bridge-lab
 
-## ⚖ License
+## License
 
 Copyright (c) 2021-present Takeshi Katano. All rights reserved. This software is released under the [MIT License](https://github.com/tksh164/electron-context-bridge-lab/blob/main/LICENSE).
 
